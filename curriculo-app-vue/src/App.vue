@@ -1,22 +1,17 @@
 <template>
     <div id="app">
-      <Home_Curriculo
-        name="Arthur Barros"
-        idade="19"
-        civil="Solteiro"
-        naturalidade="MT - Cuiabá"
-        nacionalidade="Brasil"
-      />
+      <Menu />
+      <router-view />
     </div>
 </template>
 
 <script>
-import Home_Curriculo from "./components/Home_Curriculo.vue";
+import Menu from "../src/components/Menu";
 
 export default {
   name: "App",
   components: {
-    Home_Curriculo,
+    Menu,
   },
 };
 </script>

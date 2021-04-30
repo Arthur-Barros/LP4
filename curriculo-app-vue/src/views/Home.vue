@@ -93,7 +93,7 @@
 
 <script>
 export default {
-  name: "Home_Curriculo",
+  name: "Home",
   props: {
     name: String,
     idade: Number,
