@@ -1,0 +1,16 @@
+.btn{
+    margin-right: 8px;
+}
+
+.markAsDone{
+    text-decoration: line-through;
+    color: red;
+}
+
+.tableActions{
+    width: 110px;
+}
+
+.tableForm{
+    padding-bottom: 50px;
+}
