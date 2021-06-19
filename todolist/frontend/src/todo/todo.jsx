@@ -31,14 +31,14 @@ export default class Todo extends Component {
 
     handleAdd(){
         const description = this.state.description;
-        axios.post(url_node_express, {description})
+        axios.post(url_backend_python, {description})
             .then(resp => this.handleSearch());
     }
 
     
     handleSearch(description = ""){
         const search = description ? `&description__regex=/${description}` : '';
-        axios.get(`${url_node_express}?sort=-createdAt${search}`)
+        axios.get(`${url_backend_python}?sort=-createdAt${search}`)
             .then(resp => this.setState({
                 ...this.state,
                 description,
@@ -47,17 +47,31 @@ export default class Todo extends Component {
     }
 
     handleAsDone(todo){
-        axios.put(`${url_node_express}/${todo._id}`, {...todo, done: true})
+        axios.patch(`${url_backend_python}/${todo._id}`, {...todo, done: true})
             .then(resp => this.handleSearch());
     }
 
     handleMarkAsPending(todo){
-        axios.put(`${url_node_express}/${todo._id}`, {...todo, done: false})
+        axios.patch(`${url_backend_python}/${todo._id}`, {...todo, done: false})
             .then(resp => this.handleSearch());
     }
 
+
+    // //rota para atualizar com o backend em node.
+    // handleAsDone(todo){
+    //     axios.put(`${url_node_express}/${todo._id}`, {...todo, done: true})
+    //         .then(resp => this.handleSearch());
+    // }
+
+    
+    //rota para atualizar com o backend em node
+    // handleMarkAsPending(todo){
+    //     axios.put(`${url_node_express}/${todo._id}`, {...todo, done: false})
+    //         .then(resp => this.handleSearch());
+    // }
+
     handleMarkAsRemove(todo){
-        axios.delete(`${url_node_express}/${todo._id}`)
+        axios.delete(`${url_backend_python}/${todo._id}`)
             .then(resp => this.handleSearch())
     }
 

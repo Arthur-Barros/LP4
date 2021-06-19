@@ -13,7 +13,7 @@ class Todos(db.Document):
     createdAt = db.DateTimeField(default=datetime.datetime.utcnow)
     def to_json(self):
             return {
-                "id":json.dumps(f"{self.id}"),
+                "_id": str(self.id),
                 "description": self.description,
                 "done": self.done
             }

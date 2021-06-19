@@ -35,15 +35,16 @@ def createTodo():
         datas = request.json
         todo = Todos(
             description=datas["description"],
-            done=request
         )
-      
-        dbResponse = todo.save()
 
+        if not todo.description == "":
+            dbResponse = todo.save()
+        
+        
         return Response(
             response= json.dumps(
                 {"message": "todo created",
-                "id": f"{dbResponse.id}",
+                "_id": f"{dbResponse.id}",
                 }),
             status=200,
             mimetype="aplication/json"
@@ -51,10 +52,10 @@ def createTodo():
     except Exception as ex:
         print(ex)
 
-@app.route("/todos/<id>", methods=["PATCH"])
-def upadte_todo(id):
+@app.route("/todos/<_id>", methods=["PATCH"])
+def upadte_todo(_id):
     try:
-        dbResponse = Todos.objects(id=id)
+        dbResponse = Todos.objects(id=_id)
         dbResponse.update(
             description=request.json["description"],
             done=request.json["done"]
@@ -79,15 +80,17 @@ def upadte_todo(id):
         )
 
 #################################
-@app.route("/todos/<id>", methods=["DELETE"])
-def delete_todo(id):
+@app.route("/todos/<_id>", methods=["DELETE"])
+def delete_todo(_id):
     try:
-        dbResponse = Todos.objects(id=id)
+        dbResponse = Todos(id=_id)
+        print("opaaaa", dbResponse)
+    
         dbResponse.delete()
         
         return Response(
             response= json.dumps(
-            {"message": "todo deleted", "id": f"{id}"}),
+            {"message": "todo deleted", "_id": _id}),
             status=200,
             mimetype="aplication/json"
         )
