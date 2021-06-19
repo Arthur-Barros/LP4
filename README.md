@@ -18,7 +18,7 @@ entrar na pasta cd backend_python ||
 rodar pip install virtualenv ||
 virtualenv myvenv ||
 para ativar o ambiente virtual dentro da pasta backend_python ||
-rodar o comando source myvenv/bin/activate (linux) || myvenv/Scripts/Activate (Windows)
+rodar o comando source myvenv/bin/activate (linux) || myvenv/Scripts/Activate (Windows) ||
 rodar o comando pip install flask flask_cors mongoengine
 
 depois para rodar o projeto, entrar na pasta cd src
